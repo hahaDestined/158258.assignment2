@@ -1,0 +1,56 @@
+﻿
+body {
+    background-color: #f4f4f4; 
+}
+
+.product-display {
+    background-color: #EAE0D5;
+}
+
+
+.card-body, .card-footer, .testimonial-content, .news-event-content, .testimonial-author, .news-event-date {
+    color: #333; 
+}
+
+
+h2, h4, h5, p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.btn-primary {
+    background-color: #5b3c88; 
+    border-color: #5b3c88;
+}
+
+    .btn-primary:hover {
+        background-color: #6d44a1;
+        border-color: #6d44a1;
+    }
+
+
+a {
+    color: #5b3c88;
+}
+
+    a:hover {
+        color: #6d44a1;
+    }
+
+.company-introduction p, .testimonial-content p, .testimonial-author h5, .testimonial-author p {
+    color: #6c757d; 
+    font-family: 'Open Sans', sans-serif; 
+}
+
+
+.important-text {
+    font-family: 'Dancing Script', cursive;
+    color: #5b3c88; 
+}
+
+
+.testimonial-content p {
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.2rem; 
+    color: #444; 
+}

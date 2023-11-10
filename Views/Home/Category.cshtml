@@ -1,0 +1,72 @@
+﻿@model IEnumerable<assignment2.Models.Furniture>
+
+@{
+    ViewBag.Title = "Product category display";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var furniture in Model)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
+                <div class="card h-100">
+                    <img src="@Url.Content(furniture.ImageUrl)" class="card-img-top" alt="@furniture.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@furniture.Name</h5>
+                        <p class="card-text">@furniture.Description</p>
+                       
+                    </div>
+                    
+                    <div class="card-footer">
+                        <p class="card-text">价格：￥@furniture.Price.ToString("N2")</p> 
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="text-center">
+    <div class="btn-group">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a href="@Url.Action("Category", "Home", new { category = ViewBag.Category, page = ViewBag.CurrentPage - 1 })" class="btn btn-default">Last Page</a>
+        }
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <a href="@Url.Action("Category", "Home", new { category = ViewBag.Category, page = i })" class="btn btn-default @(i == ViewBag.CurrentPage ? "active" : "")">@i</a>
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a href="@Url.Action("Category", "Home", new { category = ViewBag.Category, page = ViewBag.CurrentPage + 1 })" class="btn btn-default">Next Page</a>
+        }
+    </div>
+</div>
+
+
+<style>
+    .btn-default.active {
+        background-color: #007bff;
+        color: white;
+    }
+    .card-img-top {
+        width: 100%; /* Make sure image covers 100% of card width */
+        height: 200px;
+        object-fit: cover; /* This will cover the area without stretching the picture */
+    }
+
+    .card {
+        /* Optional: If you want all cards to have the same height */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-body {
+        /* Makes sure that button sticks to the bottom */
+        display: flex;
+        flex-direction: column;
+    }
+</style>

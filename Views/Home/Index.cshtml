@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model IEnumerable<assignment2.Models.Furniture>
+
+<!-- 引入 Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/SamePhotoes.css">
+<link rel="stylesheet" href="~/Content/HomeSheet.css">
+<main>
+
+
+    <!-- Company Profile -->
+    <section class="company-introduction py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="text-center mb-4">MS Furniture Company</h2>
+            <p class="text-center">Welcome to our furniture company. We provide high-quality, sustainable, and modern furniture that fits your lifestyle. Browse our collection to find pieces that will make your house feel like home.</p>
+        </div>
+    </section>
+
+
+
+    <section class="search-bar py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Search Furniture by ID</h2>
+            <form method="get" action="@Url.Action("Search", "Home")">
+                <div class="form-group">
+                    <input type="text" name="id" class="form-control" placeholder="Enter Furniture ID" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Product display area -->
+    <section class="product-display py-5" style="background-color: #EAE0D5;">
+
+        <div class="container">
+            <h2 class="text-center mb-4">Our Hot-Sale Products</h2>
+            <div class="row">
+                @foreach (var furniture in Model)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <img src="@Url.Content(furniture.ImageUrl)" class="card-img-top" alt="@furniture.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@furniture.Name</h5>
+                                <p class="card-text">@furniture.Description</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="btn btn-primary">Price: @furniture.Price.ToString("C")</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="text-center mb-4">What Our Customers Say</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"I recently purchased a dining table from MS Furniture Company and I am extremely satisfied with the quality and design of the product. It has added a touch of elegance to my dining room."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h5>John Doe</h5>
+                            <p>Happy Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"I have been a customer of MS Furniture Company for years and I have always been impressed with their exceptional customer service and the durability of their furniture. Highly recommended!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h5>Jane Smith</h5>
+                            <p>Repeat Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News & Events -->
+    <section class="news-events py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Latest News & Events</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="news-event">
+                        <div class="news-event-content">
+                            <h4>Grand Opening Sale</h4>
+                            <p>Join us for our grand opening sale event from September 1st to September 5th. Get up to 50% off on selected items and enjoy free shipping on all orders!</p>
+                        </div>
+                        <div class="news-event-date">
+                            <p>Date: September 1-5, 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="news-event">
+                        <div class="news-event-content">
+                            <h4>Interior Design Workshop</h4>
+                            <p>Learn the latest interior design trends and techniques at our free workshop on October 10th. Our expert designers will share valuable insights and tips to help you transform your home.</p>
+                        </div>
+                        <div class="news-event-date">
+                            <p>Date: October 10, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer area, including social media links -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p>Follow us on:</p>
+
+            <p>Contact us: 123@email.com</p>
+            <p>© 2023 MS Furniture Company. All rights reserved.</p>
+        </div>
+    </footer>
+</main>
+
+<!-- 引入完整版的 jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- 引入 Popper.js 和 Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#furnitureCarousel').carousel();
+    });
+</script>
+

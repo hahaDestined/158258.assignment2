@@ -1,0 +1,16 @@
+﻿@model assignment2.Models.Furniture
+
+@{
+    ViewBag.Title = "Furniture Details";
+}
+
+<div class="container mt-4">
+    <h2>Furniture Details</h2>
+    <div>
+        <h3>@Model.Name</h3>
+        <img src="@Url.Content(Model.ImageUrl)" alt="@Model.Name" style="max-width: 100%; height: auto;">
+        <p>@Model.Description</p>
+        <p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+    </div>
+    <a href="@Url.Action("Index")" class="btn btn-default">Back to List</a>
+</div>
